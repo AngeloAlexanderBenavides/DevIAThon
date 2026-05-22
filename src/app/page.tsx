@@ -30,7 +30,7 @@ export default function DeunaAppReplica() {
       const minutes = String(now.getMinutes()).padStart(2, "0");
       const ampm = hours >= 12 ? "PM" : "AM";
       hours = hours % 12 || 12;
-      setCurrentTime(\`\${hours}:\${minutes} \${ampm}\`);
+      setCurrentTime(`${hours}:${minutes} ${ampm}`);
     };
     updateClock();
     const interval = setInterval(updateClock, 60000);
@@ -47,7 +47,7 @@ export default function DeunaAppReplica() {
 
   const addTransaction = (title: string, type: "in" | "out" | "metro", amount: number, subtitle?: string) => {
     const now = new Date();
-    const timeStr = \`Hoy, \${String(now.getHours()).padStart(2, "0")}:\${String(now.getMinutes()).padStart(2, "0")}\`;
+    const timeStr = `Hoy, ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
     setTransactions((prev) => [
       { title, type, amount, subtitle, date: timeStr },
       ...prev,
@@ -56,7 +56,7 @@ export default function DeunaAppReplica() {
 
   const handleTransfer = (contact: string, amount: number) => {
     setSaldo((prev) => prev - amount);
-    addTransaction("Transferencia enviada", "out", amount, \`A: \${contact}\`);
+    addTransaction("Transferencia enviada", "out", amount, `A: ${contact}`);
   };
 
   const handleRecharge = (amount: number) => {

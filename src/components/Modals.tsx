@@ -30,7 +30,7 @@ export default function Modals({
   const [rechargeAmount, setRechargeAmount] = useState("");
 
   const formatCurrency = (value: number) => {
-    return \`$\${value.toFixed(2).replace(".", ",")}\`;
+    return `$${value.toFixed(2).replace(".", ",")}`;
   };
 
   const handleTransfer = () => {
@@ -81,7 +81,7 @@ export default function Modals({
   return (
     <>
       {/* Transferir */}
-      <div className={\`modal-overlay \${activeModal === "transfer" ? "active" : ""}\`} onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className={`modal-overlay ${activeModal === "transfer" ? "active" : ""}`} onClick={(e) => e.target === e.currentTarget && onClose()}>
         <div className="modal-card">
           <div className="modal-header">
             <button className="modal-close-btn" onClick={onClose}>
@@ -164,7 +164,7 @@ export default function Modals({
       </div>
 
       {/* Recargar */}
-      <div className={\`modal-overlay \${activeModal === "recharge" ? "active" : ""}\`} onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className={`modal-overlay ${activeModal === "recharge" ? "active" : ""}`} onClick={(e) => e.target === e.currentTarget && onClose()}>
         <div className="modal-card">
           <div className="modal-header">
             <button className="modal-close-btn" onClick={onClose}>
@@ -236,7 +236,7 @@ export default function Modals({
       </div>
 
       {/* Escanear QR */}
-      <div className={\`modal-overlay \${activeModal === "qr" ? "active" : ""}\`} onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className={`modal-overlay ${activeModal === "qr" ? "active" : ""}`} onClick={(e) => e.target === e.currentTarget && onClose()}>
         <div className="modal-card full-screen">
           <div className="modal-header">
             <button className="modal-close-btn white" onClick={onClose}>
@@ -265,7 +265,7 @@ export default function Modals({
       </div>
 
       {/* Metro UIO Ticket */}
-      <div className={\`modal-overlay \${activeModal === "metro" ? "active" : ""}\`} onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div className={`modal-overlay ${activeModal === "metro" ? "active" : ""}`} onClick={(e) => e.target === e.currentTarget && onClose()}>
         <div className="modal-card">
           <div className="modal-header">
             <button className="modal-close-btn" onClick={onClose}>

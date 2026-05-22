@@ -28,7 +28,7 @@ export default function DashboardScreen({
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const formatCurrency = (value: number) => {
-    return \`$\${value.toFixed(2).replace(".", ",")}\`;
+    return `$${value.toFixed(2).replace(".", ",")}`;
   };
 
   const handleToggleSaldo = () => {
@@ -155,7 +155,7 @@ export default function DashboardScreen({
         <div className="carousel-container">
           <div
             className="carousel-track"
-            style={{ transform: \`translateX(-\${currentSlide * 33.333}%)\` }}
+            style={{ transform: `translateX(-${currentSlide * 33.333}%)` }}
           >
             <div className="carousel-slide slide-1">
               <div className="slide-content">
@@ -184,7 +184,7 @@ export default function DashboardScreen({
           {[0, 1, 2].map((index) => (
             <div
               key={index}
-              className={\`dot \${currentSlide === index ? "active" : ""}\`}
+              className={`dot ${currentSlide === index ? "active" : ""}`}
               onClick={() => setCurrentSlide(index)}
             ></div>
           ))}
@@ -200,15 +200,15 @@ export default function DashboardScreen({
         <div className="transactions-list">
           {transactions.map((tx, idx) => (
             <div key={idx} className="transaction-item">
-              <div className={\`tx-icon \${tx.type === "in" ? "tx-in" : tx.type === "metro" ? "tx-metro" : "tx-out"}\`}>
-                <i className={\`fa-solid \${tx.type === "in" ? "fa-arrow-down" : tx.type === "metro" ? "fa-train-subway" : "fa-arrow-up"}\`}></i>
+              <div className={`tx-icon ${tx.type === "in" ? "tx-in" : tx.type === "metro" ? "tx-metro" : "tx-out"}`}>
+                <i className={`fa-solid ${tx.type === "in" ? "fa-arrow-down" : tx.type === "metro" ? "fa-train-subway" : "fa-arrow-up"}`}></i>
               </div>
               <div className="tx-details">
                 <span className="tx-title">{tx.title}</span>
                 {tx.subtitle && <span className="tx-subtitle">{tx.subtitle}</span>}
                 <span className="tx-date">{tx.date}</span>
               </div>
-              <span className={\`tx-amount \${tx.type === "in" ? "positive" : "negative"}\`}>
+              <span className={`tx-amount ${tx.type === "in" ? "positive" : "negative"}`}>
                 {tx.type === "in" ? "+" : "-"}{formatCurrency(tx.amount)}
               </span>
             </div>
@@ -224,19 +224,19 @@ export default function DashboardScreen({
           </button>
         </div>
         <div className="nav-tabs">
-          <div className={\`nav-item \${activeTab === "inicio" ? "active" : ""}\`} onClick={() => handleTabClick("inicio")}>
+          <div className={`nav-item ${activeTab === "inicio" ? "active" : ""}`} onClick={() => handleTabClick("inicio")}>
             <i className="fa-solid fa-house"></i>
             <span>Inicio</span>
           </div>
-          <div className={\`nav-item \${activeTab === "beneficios" ? "active" : ""}\`} onClick={() => handleTabClick("beneficios")}>
+          <div className={`nav-item ${activeTab === "beneficios" ? "active" : ""}`} onClick={() => handleTabClick("beneficios")}>
             <i className="fa-solid fa-gift"></i>
             <span>Beneficios</span>
           </div>
-          <div className={\`nav-item \${activeTab === "billetera" ? "active" : ""}\`} onClick={() => handleTabClick("billetera")}>
+          <div className={`nav-item ${activeTab === "billetera" ? "active" : ""}`} onClick={() => handleTabClick("billetera")}>
             <i className="fa-solid fa-wallet"></i>
             <span>Billetera</span>
           </div>
-          <div className={\`nav-item \${activeTab === "tu" ? "active" : ""}\`} onClick={() => handleTabClick("tu")}>
+          <div className={`nav-item ${activeTab === "tu" ? "active" : ""}`} onClick={() => handleTabClick("tu")}>
             <i className="fa-regular fa-user"></i>
             <span>Tú</span>
           </div>
