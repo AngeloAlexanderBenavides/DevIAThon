@@ -1,16 +1,18 @@
-@import "tailwindcss";
-
 /* --- VARIABLES Y DISEÑO DEL SISTEMA --- */
 :root {
     --primary-purple: #4C1D80;
+    /* Color corporativo "Honey Flower" de Deuna! */
     --primary-dark: #35125d;
     --light-purple: #f5f0fb;
     --accent-green: #4C1D80;
+    /* Color verde-amarillo fosforescente de Deuna! */
     --accent-dark: #005a40;
     --text-dark: #120A21;
+    /* Texto oscuro con tinte morado */
     --text-gray: #756f86;
     --bg-color: #ffffff;
     --bg-app: #fcfbfe;
+    /* Fondo de la app fuera de las tarjetas */
     --border-color: #eceaf0;
     --card-shadow: 0 8px 24px rgba(76, 29, 128, 0.05);
     --modal-shadow: 0 -10px 30px rgba(18, 10, 33, 0.12);
@@ -31,6 +33,7 @@
 
 body {
     background-color: #0c0813;
+    /* Fondo oscuro exterior de la página */
     background-image: radial-gradient(circle at 20% 30%, #2e1554 0%, #0c0813 70%);
     display: flex;
     justify-content: center;
@@ -52,6 +55,7 @@ body {
     border: 8px solid #201a2d;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 4px #2b253b;
     overflow: hidden;
+    /* Oculta overflow para transiciones de pantalla */
     display: flex;
     flex-direction: column;
 }
@@ -132,12 +136,14 @@ body {
     display: block;
 }
 
+/* Welcome screen: logo grande centrado */
 .logo-img--welcome {
     height: 100px;
     width: auto;
     margin: 0 auto;
 }
 
+/* PIN screen: logo mediano, centrado visualmente */
 .logo-img--pin {
     height: 100px;
     width: auto;
@@ -145,6 +151,7 @@ body {
     transform: translateX(-15px);
 }
 
+/* Dashboard header: logo pequeño inline */
 .logo-img--header {
     height: 80px;
     width: auto;
@@ -160,6 +167,7 @@ body {
     height: 50px;
     width: auto;
 }
+
 
 /* Código QR y Brackets */
 .welcome-qr-section {
@@ -364,6 +372,7 @@ body {
     font-size: 28px;
     margin: 0 auto;
     transform: translateX(-15px);
+    /* Centrado visual */
 }
 
 .pin-title-container {
@@ -458,6 +467,7 @@ body {
 /* --- PANTALLA 3: DASHBOARD / PANEL PRINCIPAL --- */
 #screen-dashboard {
     padding-bottom: 140px;
+    /* Espacio para navegación inferior */
 }
 
 /* --- CABECERA DE LA APP (DENTRO DEL HOME) --- */
@@ -509,6 +519,7 @@ body {
     display: flex;
     align-items: center;
 }
+
 
 .header-actions {
     display: flex;

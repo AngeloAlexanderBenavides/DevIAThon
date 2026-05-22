@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deuna! App Replica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Mobile Status Bar Simulation -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="status-time" id="status-time">6:05 PM</span>
+                <i class="fa-solid fa-clock alarm-icon"></i>
+                <i class="fa-brands fa-instagram notification-icon"></i>
+                <i class="fa-brands fa-whatsapp notification-icon"></i>
+            </div>
+            <div class="status-right">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <span class="battery-pct">32</span>
+                <i class="fa-solid fa-battery-quarter"></i>
+            </div>
+        </div>
+
+        <!-- SCREEN 1: WELCOME / PRE-LOGIN -->
+        <div class="app-screen" id="screen-welcome">
+            <div class="welcome-header">
+                <img src="logo.png" class="welcome-logo-img" alt="Deuna logo" />
+            </div>
+
+            <div class="welcome-qr-section">
+                <div class="qr-frame-container">
+                    <div class="qr-frame-corner qr-top-left"></div>
+                    <div class="qr-frame-corner qr-top-right"></div>
+                    <div class="qr-frame-corner qr-bottom-left"></div>
+                    <div class="qr-frame-corner qr-bottom-right"></div>
+
+                    <div class="qr-code-display">
+                        <img src="qr.png" class="qr-code-img" width="200" height="200" alt="QR code" />
+                    </div>
+                </div>
+
+                <p class="welcome-qr-hint">Usa este QR o Nro de cuenta para cobrar</p>
+                <div class="welcome-account-row">
+                    <span class="welcome-account-label">Nro. <span id="welcome-account-number">******7833</span></span>
+                    <i class="fa-solid fa-eye-slash" id="btn-toggle-account"></i>
+                </div>
+            </div>
+
+            <div class="welcome-actions-row">
+                <div class="welcome-shortcut-card" id="btn-welcome-metro">
+                    <div class="shortcut-icon-wrapper">
+                        <i class="fa-solid fa-train-subway"></i>
+                    </div>
+                    <span>Metro UIO</span>
+                </div>
+                <div class="welcome-shortcut-card" id="btn-welcome-scan">
+                    <div class="shortcut-icon-wrapper">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <span>Escanear QR</span>
+                </div>
+            </div>
+
+            <div class="welcome-footer">
+                <button class="btn-enter-app" id="btn-goto-pin">Ingresar a Deuna</button>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: PIN LOCK CODE -->
+        <div class="app-screen hidden" id="screen-pin">
+            <div class="pin-header">
+                <button class="pin-back-btn" id="btn-pin-back"><i class="fa-solid fa-chevron-left"></i></button>
+                <img src="logo.png" class="welcome-logo-img" alt="Deuna logo" />
+            </div>
+
+            <div class="pin-title-container">
+                <h2>Ingresa tu PIN</h2>
+                <p>Ingresa tu clave de 4 dígitos para acceder</p>
+            </div>
+
+            <div class="pin-dots-container">
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+            </div>
+
+            <div class="pin-pad-container">
+                <div class="pin-key" data-value="1">1</div>
+                <div class="pin-key" data-value="2">2</div>
+                <div class="pin-key" data-value="3">3</div>
+                <div class="pin-key" data-value="4">4</div>
+                <div class="pin-key" data-value="5">5</div>
+                <div class="pin-key" data-value="6">6</div>
+                <div class="pin-key" data-value="7">7</div>
+                <div class="pin-key" data-value="8">8</div>
+                <div class="pin-key" data-value="9">9</div>
+                <div class="pin-key empty"></div>
+                <div class="pin-key" data-value="0">0</div>
+                <div class="pin-key delete" id="btn-pin-delete">
+                    <i class="fa-solid fa-delete-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: MAIN DASHBOARD -->
+        <div class="app-screen hidden" id="screen-dashboard">
+            <!-- App Custom Header -->
+            <div class="app-header">
+                <div class="user-profile">
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <div class="profile-greeting">
+                        <span class="greeting-sub">Hola,</span>
+                        <span class="greeting-name">Edison</span>
+                    </div>
+                </div>
+                <div class="app-logo">
+                    <img src="logo.png" class="app-logo-img" alt="Deuna logo" />
+                </div>
+                <div class="header-actions">
+                    <div class="header-icon-btn" id="btn-notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Banner Recharge Promo -->
+            <div class="top-banner" id="btn-top-banner">
+                <span class="banner-text">¡Ups! ¿Sin saldo? Sigue en línea y recarga tu cel aquí 👉</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+            <!-- Balance Card -->
+            <div class="balance-card">
+                <div class="balance-info">
+                    <h3>Saldo disponible</h3>
+                    <div class="balance-amount">
+                        <h1 id="monto-saldo">$45,50</h1>
+                        <i class="fa-solid fa-eye" id="toggle-eye"></i>
+                    </div>
+                </div>
+                <div class="balance-actions-header">
+                    <button class="header-btn" id="quick-recharge-btn">
+                        <i class="fa-solid fa-plus"></i> Recargar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Actions Grid -->
+            <div class="services-grid">
+                <div class="service-item" id="btn-transfer">
+                    <div class="service-icon ic-transfer"><img src="transferir.jpg" alt="Transferir" /></div>
+                    <span>Transferir</span>
+                </div>
+                <div class="service-item" id="btn-transfer-bank">
+                    <div class="service-icon ic-bank"><img src="transferirotrobanco.jpg"
+                            alt="Transferir a otros bancos" /></div>
+                    <span>A otros bancos</span>
+                </div>
+                <div class="service-item" id="btn-recharge-grid">
+                    <div class="service-icon ic-recharge"><img src="recargar.jpg" alt="Recargar" /></div>
+                    <span>Recargar</span>
+                </div>
+                <div class="service-item" id="btn-charge">
+                    <div class="service-icon ic-charge"><img src="cobrar con qr.png" alt="Cobrar con QR" /></div>
+                    <span>Cobrar con QR</span>
+                </div>
+                <div class="service-item" id="btn-withdraw">
+                    <div class="service-icon ic-withdraw"><img src="retirar.jpg" alt="Retirar efectivo" /></div>
+                    <span>Retirar efectivo</span>
+                </div>
+                <div class="service-item" id="btn-phone-recharge">
+                    <div class="service-icon ic-phone"><img src="recargarcelular.jpg" alt="Recarga celular" /></div>
+                    <span>Recarga celular</span>
+                </div>
+                <div class="service-item" id="btn-pay-services">
+                    <div class="service-icon ic-pay"><img src="pagarservicios.jpg" alt="Pagar servicios" /></div>
+                    <span>Pagar servicios</span>
+                </div>
+                <div class="service-item" id="btn-metro">
+                    <div class="service-icon ic-metro"><img src="metrodequito.jpg" alt="Metro de Quito" /></div>
+                    <span>Metro de Quito</span>
+                </div>
+                <div class="service-item" id="btn-deuna-jovenes">
+                    <div class="service-icon ic-deuna-jovenes"><img src="deunajovenes.jpg" alt="Deuna Jóvenes" /></div>
+                    <span>Deuna Jóvenes</span>
+                </div>
+            </div>
+
+            <!-- Promotions Section (Carousel) -->
+            <div class="section-container">
+                <h2 class="section-title">Mis promociones</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                        <div class="carousel-slide slide-1">
+                            <div class="slide-content">
+                                <h3>¡Gana una TV de 70"!</h3>
+                                <p>Haz 3 pagos deuna! o más y participa automáticamente.</p>
+                                <a href="#" class="slide-link">Conoce más <i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide slide-2">
+                            <div class="slide-content">
+                                <h3>50% Cashback en Metro</h3>
+                                <p>Paga tu viaje con Deuna! en el Metro de Quito y ahorra.</p>
+                                <a href="#" class="slide-link">Ver detalles <i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide slide-3">
+                            <div class="slide-content">
+                                <h3>Invita a un amigo</h3>
+                                <p>Recibe $2,00 por cada referido que haga su primer pago.</p>
+                                <a href="#" class="slide-link">Compartir link <i
+                                        class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dots" id="carousel-dots">
+                    <div class="dot active" data-slide="0"></div>
+                    <div class="dot" data-slide="1"></div>
+                    <div class="dot" data-slide="2"></div>
+                </div>
+            </div>
+
+            <!-- Transactions Section ("Mis movimientos") -->
+            <div class="section-container transactions-section">
+                <div class="section-header-flex">
+                    <h2 class="section-title">Mis movimientos</h2>
+                    <a href="#" class="see-all" id="btn-see-all">Ver todos</a>
+                </div>
+                <div class="transactions-list" id="transactions-list">
+                    <div class="transaction-item">
+                        <div class="tx-icon tx-in"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="tx-details">
+                            <span class="tx-title">Recarga desde cuenta</span>
+                            <span class="tx-date">Hoy, 14:32</span>
+                        </div>
+                        <span class="tx-amount positive">+$20,00</span>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="tx-icon tx-out"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div class="tx-details">
+                            <span class="tx-title">Transferencia enviada</span>
+                            <span class="tx-subtitle">A: Juan Pérez</span>
+                            <span class="tx-date">Ayer, 18:15</span>
+                        </div>
+                        <span class="tx-amount negative">-$15,00</span>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="tx-icon tx-metro"><i class="fa-solid fa-train-subway"></i></div>
+                        <div class="tx-details">
+                            <span class="tx-title">Metro de Quito</span>
+                            <span class="tx-date">20 May, 08:05</span>
+                        </div>
+                        <span class="tx-amount negative">-$0,45</span>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="tx-icon tx-out"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <div class="tx-details">
+                            <span class="tx-title">Recarga Claro</span>
+                            <span class="tx-date">18 May, 11:20</span>
+                        </div>
+                        <span class="tx-amount negative">-$5,00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation Bar -->
+            <div class="bottom-nav-container">
+                <div class="scan-btn-container">
+                    <button class="scan-btn" id="btn-scan">
+                        <i class="fa-solid fa-qrcode"></i> Escanear QR
+                    </button>
+                </div>
+                <div class="nav-tabs">
+                    <div class="nav-item active" data-tab="inicio">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Inicio</span>
+                    </div>
+                    <div class="nav-item" data-tab="beneficios">
+                        <i class="fa-solid fa-gift"></i>
+                        <span>Beneficios</span>
+                    </div>
+                    <div class="nav-item" data-tab="billetera">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Billetera</span>
+                    </div>
+                    <div class="nav-item" data-tab="tu">
+                        <i class="fa-regular fa-user"></i>
+                        <span>Tú</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal: Transferir -->
+    <div class="modal-overlay" id="modal-transfer">
+        <div class="modal-card">
+            <div class="modal-header">
+                <button class="modal-close-btn" id="btn-close-transfer"><i class="fa-solid fa-arrow-left"></i></button>
+                <h2>Transferir dinero</h2>
+            </div>
+            <div class="modal-body">
+                <div class="transfer-form" id="transfer-form-step">
+                    <div class="form-group">
+                        <label for="transfer-contact">Contacto / Celular / Cédula</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="transfer-contact" placeholder="Ej: Juan Pérez o 0998877665" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer-amount">Monto a transferir ($)</label>
+                        <div class="input-with-symbol">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="transfer-amount" placeholder="0,00" step="0.01" min="0.01"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfer-concept">Mensaje (Opcional)</label>
+                        <input type="text" id="transfer-concept" placeholder="Ej: Pago de almuerzo">
+                    </div>
+                    <button class="btn-primary" id="btn-confirm-transfer-flow">Transferir ahora</button>
+                </div>
+
+                <div class="success-screen hidden" id="transfer-success-screen">
+                    <div class="success-icon-wrapper">
+                        <div class="success-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                    <h2>¡Transferencia Exitosa!</h2>
+                    <p class="success-desc">El dinero ha sido enviado correctamente.</p>
+                    <div class="receipt-card">
+                        <div class="receipt-row">
+                            <span>Destinatario:</span>
+                            <strong id="receipt-name">Juan Pérez</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Monto:</span>
+                            <strong id="receipt-amount">$15,00</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Fecha:</span>
+                            <strong id="receipt-date">Hoy, 19:57</strong>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="btn-done-transfer">Listo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Recargar -->
+    <div class="modal-overlay" id="modal-recharge">
+        <div class="modal-card">
+            <div class="modal-header">
+                <button class="modal-close-btn" id="btn-close-recharge"><i class="fa-solid fa-arrow-left"></i></button>
+                <h2>Recargar deuna!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="recharge-form" id="recharge-form-step">
+                    <div class="form-group">
+                        <label>Origen</label>
+                        <div class="bank-source-card">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <div class="bank-details">
+                                <strong>Banco Pichincha Cuenta Ahorros</strong>
+                                <span>Cuenta activa ****5678</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recharge-amount">Monto a recargar ($)</label>
+                        <div class="input-with-symbol">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="recharge-amount" placeholder="0,00" step="0.01" min="0.01"
+                                required>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="btn-confirm-recharge-flow">Recargar ahora</button>
+                </div>
+
+                <div class="success-screen hidden" id="recharge-success-screen">
+                    <div class="success-icon-wrapper">
+                        <div class="success-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+                    <h2>¡Recarga Exitosa!</h2>
+                    <p class="success-desc">Tu saldo ha sido actualizado.</p>
+                    <div class="receipt-card">
+                        <div class="receipt-row">
+                            <span>Origen:</span>
+                            <strong>Banco Pichincha Ahorros</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Monto:</span>
+                            <strong id="recharge-receipt-amount">$10,00</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Destino:</span>
+                            <strong>Billetera Deuna!</strong>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="btn-done-recharge">Listo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Escanear QR -->
+    <div class="modal-overlay" id="modal-qr">
+        <div class="modal-card full-screen">
+            <div class="modal-header">
+                <button class="modal-close-btn white" id="btn-close-qr"><i class="fa-solid fa-xmark"></i></button>
+                <h2 class="white">Escanear código QR</h2>
+            </div>
+            <div class="modal-body qr-body">
+                <p class="qr-hint">Enfoca el código QR de un comercio o persona para pagar</p>
+                <div class="camera-viewport">
+                    <div class="scanner-frame">
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+                        <div class="scan-laser animate-laser"></div>
+                    </div>
+                </div>
+                <div class="qr-footer-actions">
+                    <button class="qr-footer-btn" id="btn-my-qr">
+                        <i class="fa-solid fa-qrcode"></i> Mostrar mi QR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Metro UIO Ticket -->
+    <div class="modal-overlay" id="modal-metro-ticket">
+        <div class="modal-card">
+            <div class="modal-header">
+                <button class="modal-close-btn" id="btn-close-metro-ticket"><i
+                        class="fa-solid fa-arrow-left"></i></button>
+                <h2>Metro de Quito UIO</h2>
+            </div>
+            <div class="modal-body">
+                <div class="metro-ticket-container">
+                    <div class="metro-logo-wrapper">
+                        <i class="fa-solid fa-train-subway"></i>
+                        <span>METRO UIO</span>
+                    </div>
+                    <p class="metro-ticket-hint">Pasa este código por el lector de acceso en la estación</p>
+                    <div class="metro-qr-wrapper">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <div class="metro-ticket-details">
+                        <div class="metro-detail-row">
+                            <span>Pasaje:</span>
+                            <strong>$0,45</strong>
+                        </div>
+                        <div class="metro-detail-row">
+                            <span>Estado:</span>
+                            <span class="status-pill active-pill">Activo</span>
+                        </div>
+                        <div class="metro-detail-row">
+                            <span>Descontado de:</span>
+                            <strong>Saldo Deuna!</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toast-container">
+        <div class="toast" id="toast-message">
+            <i class="fa-solid fa-circle-info"></i>
+            <span id="toast-text">Funcionalidad en desarrollo para la beta.</span>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
